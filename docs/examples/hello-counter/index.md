@@ -2,9 +2,9 @@
 outline: false
 ---
 
-# Hello Counter
+# 你好计数器
 
-A simple example that shows how many times the user has called the commands.
+展示用户调用命令的次数的简单示例。
 
 <ExampleFunctions :fns="[
   'useCommands',

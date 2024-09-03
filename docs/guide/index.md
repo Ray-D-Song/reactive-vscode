@@ -1,14 +1,10 @@
----
-outline: [2,3]
----
+# 入门指南
 
-# Get Started
+Reactive VSCode 是一个库，帮助您使用 [Vue 的响应性 API](https://vuejs.org/api/reactivity-core.html) 开发 Visual Studio Code 扩展。我们假设您已经熟悉 [Vue 的响应性 API](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) 的基本概念。
 
-Reactive VSCode is a library that helps you develop Visual Studio Code extensions with [Vue's Reactivity API](https://vuejs.org/api/reactivity-core.html). We assume you are already familiar with the basic ideas of [Vue's Reactivity API](https://vuejs.org/guide/essentials/reactivity-fundamentals.html).
+阅读 [为什么要使用 reactive-vscode](./why.md) 以获取有关为何创建 <ReactiveVscode /> 的更多信息。
 
-Read [Why reactive-vscode](./why.md) for more information about why <ReactiveVscode /> is created.
-
-## Create a New Project
+## 创建新项目
 
 ::: code-group
 
@@ -26,28 +22,28 @@ yarn create reactive-vscode
 
 :::
 
-Or you can add it to an existing project by installing the `reactive-vscode` package.
+或者您可以通过安装 `reactive-vscode` 包将其添加到现有项目中。
 
-## Package Exports
+## 包导出
 
-The package exports the following:
+该包导出以下内容：
 
-- Utility functions and types, like `reactive::defineExtension`
-- Wrappers of VSCode APIs as composables, like `reactive::useActiveTextEditor`
-- All exports from `npm::@vue/reactivity`, like `vue::ref(https://vuejs.org/api/reactivity-core.html#ref)`
-- Exports that are useful for VSCode extension from `npm::@vue/runtime-core`, like `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)`
+- 实用函数和类型，如 `reactive::defineExtension`
+- 将 VSCode API 包装为组合式的函数，如 `reactive::useActiveTextEditor`
+- 来自 `npm::@vue/reactivity` 的所有导出，如 `vue::ref(https://vuejs.org/api/reactivity-core.html#ref)`
+- 对于 VSCode 扩展有用的来自 `npm::@vue/runtime-core` 的导出，如 `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)`
 
-You can find all the implemented composables [here](../functions/index.md). They will be documented in the future.
+您可以在[这里](../functions/index.md)找到所有已实现的组合式函数。它们将在将来进行文档化。
 
-## Extension Basics
+## 扩展基础
 
-### Extension Manifest <NonProprietary />
+### 扩展清单 <NonProprietary />
 
-Each VS Code extension must have a `package.json` as its [Extension Manifest](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest). Please visit the [official documentation](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest) for more information.
+每个 VS Code 扩展都必须有一个 `package.json` 作为其 [扩展清单](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest)。请访问[官方文档](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest)以获取更多信息。
 
-### Extension Entry File
+### 扩展入口文件
 
-Usually, the [extension entry file](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-entry-file) is `src/extension.ts`. You can define your extension by using the `reactive::defineExtension` function:
+通常，[扩展入口文件](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-entry-file) 是 `src/extension.ts`。您可以使用 `reactive::defineExtension` 函数来定义您的扩展：
 
 ```ts
 import { defineExtension } from 'reactive-vscode'
@@ -57,11 +53,11 @@ export = defineExtension(() => {
 })
 ```
 
-We will introduce how to write the body of your extension in [the next section](./extension.md).
+我们将在[下一节](./extension.md)介绍如何编写扩展的主体部分。
 
-## Developing the Extension
+## 开发扩展
 
-1. Open a new terminal and run the following command:
+1. 打开一个新终端并运行以下命令：
 
 ::: code-group
 
@@ -79,16 +75,16 @@ yarn dev
 
 :::
 
-2. <NonProprietary /> Inside the editor, press <kbd>F5</kbd> or run the command **Debug: Start Debugging** from the Command Palette (<kbd>Ctrl+Shift+P</kbd>). This will run the extension in a new window.
+2. <NonProprietary /> 在编辑器中，按下 <kbd>F5</kbd> 或从命令面板中运行命令 **Debug: Start Debugging**（<kbd>Ctrl+Shift+P</kbd>）。这将在新窗口中运行扩展。
 
-> Visit the [VSCode Documentation](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) for more information about debugging the extension.
+> 访问 [VSCode 文档](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) 获取有关调试扩展的更多信息。
 
 <div h-4 />
 
 ---
 
-::: info [Twoslash](https://twoslash.netlify.app/) powered docs!
+::: info [Twoslash](https://twoslash.netlify.app/) 强力驱动的文档！
 
-You can hover the tokens in code blocks to inspect their types. This is especially useful for details not covered in the docs.
+您可以悬停在代码块中的标记上以检查其类型。这对于文档中未涵盖的细节特别有用。
 
 :::

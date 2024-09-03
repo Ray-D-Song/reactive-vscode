@@ -1,8 +1,8 @@
-# Disposables
+# 一次性资源
 
-Although most of the VSCode API is covered by <ReactiveVscode />, sometimes you still need to work with `vscode::Disposable`, which is also described in [VSCode API Patterns](https://code.visualstudio.com/api/references/vscode-api#disposables).
+尽管大部分的 VSCode API 都由 <ReactiveVscode /> 覆盖，但有时您仍然需要使用 `vscode::Disposable`，这也在 [VSCode API 模式](https://code.visualstudio.com/api/references/vscode-api#disposables) 中有描述。
 
-`reactive::useDisposable` accepts a disposable object and automatically disposes it when the current effect scope is disposed (e.g., when the extension is deactivated, if `vscode::useDisposable` is called in the extension's setup function). `reactive::useDisposable` returns the disposable object itself as is.
+`reactive::useDisposable` 接受一个一次性对象，并在当前效果范围被释放时自动处理它（例如，当扩展被停用时，如果在扩展的设置函数中调用 `vscode::useDisposable`）。`reactive::useDisposable` 返回一次性对象本身。
 
 ```ts
 import { defineExtension, useDisposable } from 'reactive-vscode'
@@ -21,4 +21,4 @@ export = defineExtension(() => {
 })
 ```
 
-Note that you needn't to use `reactive::useDisposable` for disposables created by any <ReactiveVscode /> functions. They are automatically disposed when the current effect scope is disposed.
+请注意，对于由任何 <ReactiveVscode /> 函数创建的一次性资源，您无需使用 `reactive::useDisposable`。它们在当前效果范围被释放时会自动处理。

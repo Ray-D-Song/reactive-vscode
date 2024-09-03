@@ -4,37 +4,37 @@ layout: home
 
 hero:
   name: Reactive VSCode # '<span class="p1">Reactive</span> <span class="p2">VSCode</span>'
-  text: "Extension API"
+  text: "扩展 API"
   tagline: |
-    Develop <span class="i-vscode-icons:file-type-vscode text-2xl"></span> <span class="text-vscode">Extension</span> with <span class="i-vscode-icons:file-type-vue text-2xl"></span> <span class="text-reactive">Composition</span> API
+    使用 <span class="i-vscode-icons:file-type-vscode text-2xl"></span> <span class="text-vscode">扩展</span> 与 <span class="i-vscode-icons:file-type-vue text-2xl"></span> <span class="text-reactive">组合</span> API 进行开发
   image: /logo.svg
   actions:
     - theme: brand
-      text: Get Started
+      text: 开始
       link: /guide/
     - theme: alt
-      text: Why?
+      text: 为什么？
       link: /guide/why
     - theme: alt
-      text: Functions
+      text: 函数
       link: /functions
     - theme: alt
-      text: Examples
+      text: 示例
       link: /examples/
 
 features:
   - icon: 🚀
-    title: Easy to use
-    details: Familiar Vue Reactivity API
+    title: 易于使用
+    details: 熟悉的 Vue 响应式 API
   - icon: 🦾
-    title: Feature rich
-    details: Most of the VSCode APIs included
+    title: 功能丰富
+    details: 包含大多数 VSCode API
   - icon: ⚡
-    title: Fully tree shakeable
-    details: Only take what you want
+    title: 完全可摇树
+    details: 只取你所需
   - icon: <span class="i-logos-vueuse"></span>
-    title: VueUse Integration
-    details: A Collection of Vue composition utilities
+    title: VueUse 集成
+    details: 一套 Vue 组合实用程序集合
     link: /guide/vueuse
 ---
 
@@ -48,13 +48,13 @@ import { withBase } from 'vitepress'
 
 <<< ./examples/editor-decoration/1.ts [<ReactiveVscode2 />]
 
-<<< ./examples/editor-decoration/2.ts [Original VSCode API]
+<<< ./examples/editor-decoration/2.ts [原始 VSCode API]
 
 :::
 
 <div class="absolute top-4 text-sm right-6 op-80 hidden sm:block">
 <a :href="withBase('examples/index.html')" style="text-decoration: none">
-<span class="i-carbon-launch mb-.5"></span> More examples
+<span class="i-carbon-launch mb-.5"></span> 更多示例
 </a>
 </div>
 

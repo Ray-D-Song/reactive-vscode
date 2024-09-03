@@ -1,8 +1,8 @@
-# Events
+# 事件
 
-Although most of the VSCode API is covered by <ReactiveVscode />, sometimes you still need to create or listen original [VSCode events](https://code.visualstudio.com/api/references/vscode-api#events).
+尽管大部分的 VSCode API 都被 <ReactiveVscode /> 所覆盖，但有时您仍然需要创建或监听原始 [VSCode 事件](https://code.visualstudio.com/api/references/vscode-api#events)。
 
-`reactive::useEvent` converts an raw event to a auto-disposed event:
+`reactive::useEvent` 将原始事件转换为自动处理的事件：
 
 ```ts
 import { defineExtension, useEvent } from 'reactive-vscode'
@@ -18,7 +18,7 @@ export = defineExtension(() => {
 })
 ```
 
-`reactive::useEventEmitter` creates a frindly event emitter, which still extends `vscode::EventEmitter`:
+`reactive::useEventEmitter` 创建一个友好的事件发射器，仍然扩展了 `vscode::EventEmitter`：
 
 <!-- eslint-disable import/first -->
 ```ts
@@ -42,7 +42,7 @@ export = defineExtension(() => {
 })
 ```
 
-You can also convert a raw event to a friendly event emitter:
+您还可以将原始事件转换为友好的事件发射器：
 
 ```ts {6}
 import { defineExtension, useEventEmitter } from 'reactive-vscode'

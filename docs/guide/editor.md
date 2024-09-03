@@ -1,10 +1,10 @@
-# Editor and Document
+# 编辑器和文档
 
-Editors and documents are the core of the VS Code extension development. In this guide, we will learn how to interact with the editor and document.
+编辑器和文档是 VS Code 扩展开发的核心。在本指南中，我们将学习如何与编辑器和文档进行交互。
 
-## The Active Editor
+## 活动编辑器
 
-The active editor is the one that currently has focus or, when none has focus, the one that has changed input most recently. The `reactive::useActiveTextEditor` and `reactive::useActiveNotebookEditor`  composable can be used to get the active text editor.
+活动编辑器是当前具有焦点的编辑器，或者当没有焦点时，是最近更改输入的编辑器。`reactive::useActiveTextEditor` 和 `reactive::useActiveNotebookEditor` 可以用于获取活动文本编辑器。
 
 ```ts
 import { defineExtension, useActiveNotebookEditor, useActiveTextEditor, watchEffect } from 'reactive-vscode'
@@ -22,9 +22,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Visible Editors
+## 可见编辑器
 
-The `reactive::useVisibleTextEditors` and `reactive::useVisibleNotebookEditors` composable can be used to get the visible text editors.
+`reactive::useVisibleTextEditors` 和 `reactive::useVisibleNotebookEditors` 可以用于获取可见文本编辑器。
 
 ```ts
 import { defineExtension, useVisibleNotebookEditors, useVisibleTextEditors, watchEffect } from 'reactive-vscode'
@@ -41,13 +41,13 @@ export = defineExtension(() => {
 })
 ```
 
-## Get Editor Document
+## 获取编辑器文档
 
-- `vscode::TextEditor.document` is the document associated with this text editor.
+- `vscode::TextEditor.document` 是与此文本编辑器关联的文档。
 
-- `vscode::NotebookEditor.notebook` the [notebook document](https://code.visualstudio.com/api/references/vscode-api#NotebookDocument) associated with this notebook editor.
+- `vscode::NotebookEditor.notebook` 与此笔记本编辑器关联的[笔记本文档](https://code.visualstudio.com/api/references/vscode-api#NotebookDocument)。
 
-The document will be the same for the entire lifetime of this text editor or notebook editor.
+文档将在此文本编辑器或笔记本编辑器的整个生命周期中保持不变。
 
 ```ts
 import { computed, defineExtension, useActiveTextEditor } from 'reactive-vscode'
@@ -60,9 +60,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Document Text
+## 文档文本
 
-The `reactive::useDocumentText` composable can be used to get the text of the active document.
+`reactive::useDocumentText` 可以用于获取活动文档的文本。
 
 ```ts
 import { computed, defineExtension, useActiveTextEditor, useDocumentText } from 'reactive-vscode'
@@ -76,7 +76,7 @@ export = defineExtension(() => {
 })
 ```
 
-The returned `text` is settable, which means you can update the text of the document.
+返回的 `text` 是可设置的，这意味着您可以更新文档的文本。
 
 <!-- eslint-disable import/first -->
 ```ts
@@ -96,9 +96,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Editor Decoration
+## 编辑器装饰
 
-The `reactive::useEditorDecorations` composable can be used to add decorations to the editor.
+`reactive::useEditorDecorations` 可以用于向编辑器添加装饰。
 
 ```ts {5-9}
 import { defineExtension, useActiveTextEditor, useEditorDecorations } from 'reactive-vscode'
@@ -113,25 +113,25 @@ export = defineExtension(() => {
 })
 ```
 
-See `vscode::TextEditor.setDecorations` for more information. To create a decoration type, use `vscode::window.createTextEditorDecorationType`.
+查看 `vscode::TextEditor.setDecorations` 以获取更多信息。要创建装饰类型，请使用 `vscode::window.createTextEditorDecorationType`。
 
-## Editor Selections
+## 编辑器选择
 
-The following 4 composable can be used to **get and set** the selections of editors.
+以下 4 个可组合项可用于**获取和设置**编辑器的选择。
 
-- `reactive::useTextEditorSelections` - All selections in the text editor.
-- `reactive::useTextEditorSelection` - The primary selection in the text editor.
-- `reactive::useNotebookEditorSelections` - All selections in the notebook editor.
-- `reactive::useNotebookEditorSelection` - The primary selection in the notebook editor.
+- `reactive::useTextEditorSelections` - 文本编辑器中的所有选择。
+- `reactive::useTextEditorSelection` - 文本编辑器中的主要选择。
+- `reactive::useNotebookEditorSelections` - 笔记本编辑器中的所有选择。
+- `reactive::useNotebookEditorSelection` - 笔记本编辑器中的主要选择。
 
-See their docs for more information. Note that `reactive::useTextEditorSelections` and `reactive::useTextEditorSelection` also support an `acceptKind` option to filter the change kind which has triggered this event (See `vscode::TextEditorSelectionChangeKind`).
+请查看它们的文档以获取更多信息。请注意，`reactive::useTextEditorSelections` 和 `reactive::useTextEditorSelection` 还支持一个 `acceptKind` 选项，用于过滤触发此事件的更改类型（请参阅 `vscode::TextEditorSelectionChangeKind`）。
 
-## Editor Viewport
+## 编辑器视口
 
-The following 3 composable can be used to **get** the viewport information of editors.
+以下 3 个可组合项可用于**获取**编辑器的视口信息。
 
-- `reactive::useTextEditorViewColumn` - The view column of the text editor.
-- `reactive::useTextEditorVisibleRanges` - The visible ranges of the text editor.
-- `reactive::useNotebookEditorVisibleRanges` - The visible ranges of the notebook editor.
+- `reactive::useTextEditorViewColumn` - 文本编辑器的视图列。
+- `reactive::useTextEditorVisibleRanges` - 文本编辑器的可见范围。
+- `reactive::useNotebookEditorVisibleRanges` - 笔记本编辑器的可见范围。
 
-See their docs for more information.
+请查看它们的文档以获取更多信息。

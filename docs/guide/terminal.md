@@ -1,10 +1,10 @@
-# Terminals
+# 终端
 
-VSCode provides a powerful terminal system that allows you to run shell commands in the integrated terminal. <ReactiveVscode /> provides a set of composable functions to create and manage terminals in a reactive way.
+VSCode提供了一个强大的终端系统，允许您在集成终端中运行shell命令。`<ReactiveVscode />`提供了一组可组合的函数，以响应式方式创建和管理终端。
 
-## Create a Terminal
+## 创建终端
 
-`reactive::useTerminal` creates a terminal via `vscode::window.createTerminal`. The params are the same as `vscode::window.createTerminal`.
+`reactive::useTerminal` 通过 `vscode::window.createTerminal` 创建一个终端。参数与 `vscode::window.createTerminal` 相同。
 
 ```ts
 import { defineExtension, useTerminal } from 'reactive-vscode'
@@ -24,9 +24,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Create a Controlled Terminal
+## 创建可控制的终端
 
-`reactive::useControlledTerminal` creates a terminal which allows you to control its lifecycle. The params are the same as `vscode::window.createTerminal`.
+`reactive::useControlledTerminal` 创建一个允许您控制其生命周期的终端。参数与 `vscode::window.createTerminal` 相同。
 
 ```ts
 import { defineExtension, useControlledTerminal } from 'reactive-vscode'
@@ -43,9 +43,9 @@ export = defineExtension(() => {
 })
 ```
 
-### The Active Terminal
+### 活动终端
 
-You can use `reactive::useActiveTerminal` to get the currently active terminal.
+您可以使用 `reactive::useActiveTerminal` 获取当前活动的终端。
 
 ```ts
 import { defineExtension, useActiveTerminal } from 'reactive-vscode'
@@ -56,9 +56,9 @@ export = defineExtension(() => {
 })
 ```
 
-### All Opened Terminals
+### 所有打开的终端
 
-You can use `reactive::useOpenedTerminals` to get all open terminals.
+您可以使用 `reactive::useOpenedTerminals` 获取所有打开的终端。
 
 ```ts
 import { defineExtension, useOpenedTerminals } from 'reactive-vscode'
@@ -69,9 +69,9 @@ export = defineExtension(() => {
 })
 ```
 
-### Get Terminal State
+### 获取终端状态
 
-You can use `reactive::useTerminalState` to get the state of an existing terminal.
+您可以使用 `reactive::useTerminalState` 获取现有终端的状态。
 
 ```ts
 import { defineExtension, useActiveTerminal, useOpenedTerminals, useTerminalState } from 'reactive-vscode'

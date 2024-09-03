@@ -1,10 +1,10 @@
-# Configurations
+# 配置
 
-An extension can contribute extension-specific settings.
+扩展可以提供特定于扩展的设置。
 
-## Define in Manifest <NonProprietary />
+## 在清单中定义 <NonProprietary />
 
-To define the settings in the `package.json`, you need to add the `contributes.configuration` field. The `configuration` field is an object that contains the configuration settings.
+要在 `package.json` 中定义设置，您需要添加 `contributes.configuration` 字段。`configuration` 字段是一个包含配置设置的对象。
 
 ```json
 {
@@ -28,13 +28,13 @@ To define the settings in the `package.json`, you need to add the `contributes.c
 }
 ```
 
-Visit the [official documentation](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration) for more information.
+访问[官方文档](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration)以获取更多信息。
 
-## Use in Extension
+## 在扩展中使用
 
-To use the settings in the extension, you can use the `reactive::defineConfigs` or `reactive::defineConfigObject` function to define the configuration. The following examples are corresponding to the above configuration.
+要在扩展中使用设置，您可以使用 `reactive::defineConfigs` 或 `reactive::defineConfigObject` 函数来定义配置。以下示例对应上述配置。
 
-### As Refs
+### 作为 Refs
 
 ```ts
 import { defineConfigs } from 'reactive-vscode'
@@ -45,9 +45,9 @@ const { enable, greeting } = defineConfigs('your-extension', {
 })
 ```
 
-Note that you should always set the default value in the manifest file. `reactive::defineConfigs` does not provide default values.
+请注意，您应该始终在清单文件中设置默认值。`reactive::defineConfigs` 不提供默认值。
 
-In the above example, `enable` is of type `ConfigRef<boolean>`, which extends `Ref<boolean>`.
+在上面的示例中，`enable` 的类型为 `ConfigRef<boolean>`，它扩展了 `Ref<boolean>`。
 
 <!-- eslint-disable import/first -->
 ```ts
@@ -70,9 +70,9 @@ enable.update(false, ConfigurationTarget.Global)
 enable.set(false)
 ```
 
-Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.
+访问[官方文档](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update)以获取有关其余选项的更多信息。
 
-### As an Object
+### 作为对象
 
 ```ts
 import { defineConfigObject } from 'reactive-vscode'
@@ -83,7 +83,7 @@ const config = defineConfigObject('your-extension', {
 })
 ```
 
-In the above example, `config` is a `vue::ShallowReactive(https://cn.vuejs.org/api/reactivity-advanced.html#shallowreactive)` object.
+在上面的示例中，`config` 是一个 `vue::ShallowReactive(https://cn.vuejs.org/api/reactivity-advanced.html#shallowreactive)` 对象。
 
 <!-- eslint-disable import/first -->
 ```ts
@@ -106,11 +106,11 @@ config.$update('enable', false, ConfigurationTarget.Global)
 config.$set('enable', false)
 ```
 
-Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.
+访问[官方文档](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update)以获取有关其余选项的更多信息。
 
-## Use with `vscode-ext-gen`
+## 与 `vscode-ext-gen` 一起使用
 
-You can also use the [`vscode-ext-gen`](https://github.com/antfu/vscode-ext-gen) to generate the configuration settings. For example:
+您还可以使用 [`vscode-ext-gen`](https://github.com/antfu/vscode-ext-gen) 来生成配置设置。例如：
 
 ```ts
 import { defineConfigObject, defineConfigs, reactive, ref } from 'reactive-vscode'

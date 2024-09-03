@@ -1,12 +1,12 @@
-# Commands
+# 命令
 
-Commands trigger actions. Commands expose functionality to users, bind to actions in VS Code's UI, and implement internal logic.
+命令触发操作。命令向用户公开功能，在 VS Code 的 UI 中绑定到操作，并实现内部逻辑。
 
-There are some [built-in commands](https://code.visualstudio.com/api/references/commands) in VS Code, and you can also define your own commands.
+在 VS Code 中有一些[内置命令](https://code.visualstudio.com/api/references/commands)，您也可以定义自己的命令。
 
-## Define in Manifest <NonProprietary />
+## 在清单中定义 <NonProprietary />
 
-As described in the [official documentation](https://code.visualstudio.com/api/references/contribution-points#contributes.commands), you need to define the commands in the `contributes.commands` field in the `package.json`.
+如[官方文档](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)所述，您需要在 `package.json` 的 `contributes.commands` 字段中定义命令。
 
 ```json
 {
@@ -26,9 +26,9 @@ As described in the [official documentation](https://code.visualstudio.com/api/r
 }
 ```
 
-## Register Commands
+## 注册命令
 
-You can use the `reactive::useCommand` or `reactive::useCommands` function to register commands in your extension.
+您可以使用 `reactive::useCommand` 或 `reactive::useCommands` 函数在您的扩展中注册命令。
 
 ```ts {6-9}
 import { window } from 'vscode'
@@ -48,11 +48,11 @@ export = defineExtension(() => {
 })
 ```
 
-## Caveats
+## 注意事项
 
-### Command Palette Visibility <NonProprietary />
+### 命令面板可见性 <NonProprietary />
 
-Commands can be used as view actions, or be called by other extensions. In that case, commands may have params and shouldn't be called via the [Command Palette](https://code.visualstudio.com/api/ux-guidelines/command-palette). We should hide these commands from the Command Palette by setting the `contributes.menus[*].when` property to `false`:
+命令可以用作视图操作，也可以被其他扩展调用。在这种情况下，命令可能具有参数，不应通过[命令面板](https://code.visualstudio.com/api/ux-guidelines/command-palette)调用。我们应该通过将 `contributes.menus[*].when` 属性设置为 `false` 来从命令面板中隐藏这些命令：
 
 ```json
 {
@@ -75,4 +75,4 @@ Commands can be used as view actions, or be called by other extensions. In that 
 }
 ```
 
-See the [official documentation](https://code.visualstudio.com/api/references/contribution-points#Context-specific-visibility-of-Command-Palette-menu-items) for more information.
+查看[官方文档](https://code.visualstudio.com/api/references/contribution-points#Context-specific-visibility-of-Command-Palette-menu-items)以获取更多信息。

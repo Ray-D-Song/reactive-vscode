@@ -1,10 +1,6 @@
----
-outline: false
----
+# 编辑器装饰
 
-# Editor Decoration
-
-A simple example that adds decorations to the active editor depending on the configuration.
+一个简单的示例，根据配置向活动编辑器添加装饰。
 
 <ExampleFunctions :fns="[
   'defineConfigs',

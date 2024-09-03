@@ -1,61 +1,57 @@
----
-outline: 'deep'
----
+# 为什么使用 <ReactiveVscode />
 
-# Why <ReactiveVscode />
+VSCode 扩展是增强开发体验的强大工具。但是开发 VSCode 扩展并不容易。这个库是为了帮助您使用 Vue 的响应性系统开发 VSCode 扩展而创建的。
 
-VSCode extensions are powerful tools to enhance your development experience. But developing a VSCode extension is not easy. This library is created to help you develop a VSCode extension with Vue's reactivity system.
+## 问题
 
-## The Problems
+开发 VSCode 扩展并不容易。官方 API 有点原始，存在一些问题：
 
-Developing a VSCode extension is not easy. The official APIs are kind of primitive, which has several problems:
+### 难以观察状态
 
-### Hard to watch states
+官方 API 是基于事件的，这意味着您必须监听事件来观察状态。这会产生大量冗余代码，并且对 Vue 开发者来说并不熟悉。
 
-The official API is event-based, which means you have to listen to events to watch the state. This produces a lot of redundant code, and not familiar to Vue developers.
+### 可处置对象
 
-### The Disposables
+在 VSCode 扩展中，处置对象随处可见。您必须将它们全部存储到 `vscode::ExtensionContext.subscriptions` 中，或者手动处理它们。
 
-Disposables are everywhere in a VSCode extension. You have to store all of them to `vscode::ExtensionContext.subscriptions`, or dispose them manually.
+### 何时初始化
 
-### When to Initialize
+在 VSCode 扩展中，视图是懒加载创建的。如果您想要访问视图实例，您必须将其存储起来，甚至监听一个在视图创建时触发的事件。
 
-Views in a VSCode extension are created lazily. If you want to access a view instance, you have to store it, and even listen to a event which is fired when the view is created.
+### 想要使用 Vue
 
-### Want to use Vue
+Vue 的响应性系统非常强大。使用 Vue 的响应性系统更容易观察状态并更新视图。但是 VSCode API 并不是为与 Vue 一起使用而设计的。
 
-Vue's reactivity system is powerful. It's much easier to watch states and update views with Vue's reactivity system. But VSCode APIs are not designed to work with Vue.
+## 解决方案
 
-## The solution
+[Vue 的响应性 API](https://vuejs.org/api/reactivity-core.html) 就是您需要的一切。这个库将大部分 VSCode API 封装成 [Vue 组合式](https://vuejs.org/guide/reusability/composables.html)。您可以像使用 Vue 响应性 API 一样使用它们，这对 Vue 开发者来说是熟悉的。
 
-[Vue's Reactivity API](https://vuejs.org/api/reactivity-core.html) is all you need. This library wraps most of the VSCode APIs into [Vue Composables](https://vuejs.org/guide/reusability/composables.html). You can use them as you use Vue Reactivity API, which is familiar to Vue developers.
+借助这个库的帮助，您可以像开发 Vue 3 Web 应用程序一样开发 VSCode 扩展。您可以使用 Vue 的响应性系统来观察状态，并将视图实现为 Vue 组合式。
 
-With the help of this library, you can develop a VSCode extension just like developing a Vue 3 web application. You can use Vue's reactivity system to watch states, and implement views as Vue composables.
+### 结果
 
-### Result
-
-Here is an example which shows how this library can help you develop a VSCode extension. The following extension decorates the active text editor depending on a configuration.
+以下是一个示例，展示了这个库如何帮助您开发 VSCode 扩展。以下扩展根据配置装饰活动文本编辑器。
 
 ::: code-group
 
 <<< ../examples/editor-decoration/1.ts [<ReactiveVscode2 />]
 
-<<< ../examples/editor-decoration/2.ts [Original VSCode API]
+<<< ../examples/editor-decoration/2.ts [原始 VSCode API]
 
 :::
 
-As you can see, after using <ReactiveVscode />, the code is much cleaner and easier to understand. With composables like `reactive::useActiveTextEditor` provided by this library, you can use Vue's reactivity API like `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` smoothly when developing a VSCode extension.
+如您所见，使用 <ReactiveVscode /> 后，代码变得更清晰、更易理解。借助这个库提供的像 `reactive::useActiveTextEditor` 这样的组合式，您可以在开发 VSCode 扩展时顺畅地使用 Vue 的响应性 API，就像 `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` 一样。
 
-More examples [here](../examples/){target="_blank"}.
+更多示例[在这里](../examples/){target="_blank"}。
 
-## FAQ
+## 常见问题
 
-### Vue without DOM and components?
+### Vue 没有 DOM 和组件？
 
-This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)).
+这个库是建立在 `npm::@vue/reactivity` 之上的，并从 `npm::@vue/runtime-core` 中移植了一些代码（请参阅[ `./packages/core/src/reactivity` 目录](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)）。
 
-The size of the minimal extension built with this library is about 12KB.
+使用这个库构建的最小扩展的大小约为 12KB。
 
-### Use Vue in Webview?
+### 在 Webview 中使用 Vue？
 
-This library is **not** designed for using Vue in a webview. If you want to use Vue in a webview, you can use the CDN version of Vue or bundler plugins like `npm::@tomjs/vite-plugin-vscode`.
+这个库**不是**为在 Webview 中使用 Vue 而设计的。如果您想在 Webview 中使用 Vue，您可以使用 Vue 的 CDN 版本或类似 `npm::@tomjs/vite-plugin-vscode` 的捆绑器插件。

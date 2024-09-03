@@ -1,10 +1,10 @@
-# Window and Workspace
+# 窗口和工作区
 
-## Theme
+## 主题
 
-You may want to apply different styles to your extension based on the current theme. Although many of the APIs (like `vscode::TreeItem.iconPath`) have built-in support for dual themes, some don't. You may also want to sync the theme in your webview.
+您可能希望根据当前主题为您的扩展应用不同的样式。尽管许多 API（如 `vscode::TreeItem.iconPath`）内置支持双主题，但有些不支持。您可能还希望在您的 Webview 中同步主题。
 
-The `reactive::useActiveColorTheme` and `reactive::useIsDrakTheme` composable can be used to get the current theme and whether it's dark or not.
+`reactive::useActiveColorTheme` 和 `reactive::useIsDrakTheme` 可以用于获取当前主题以及它是否为暗色。
 
 ```ts {5,6}
 import { defineExtension, useActiveColorTheme, useIsDarkTheme, watchEffect } from 'reactive-vscode'
@@ -26,12 +26,12 @@ export = defineExtension(() => {
 })
 ```
 
-## Window State
+## 窗口状态
 
-The `reactive::useWindowState` composable can be used to get the current window state:
+`reactive::useWindowState` 可以用于获取当前窗口状态：
 
-- `vscode::WindowState.active` - Whether the window has been interacted with recently. This will change immediately on activity, or after a short time of user inactivity.
-- `vscode::WindowState.focused` - Whether the current window is focused.
+- `vscode::WindowState.active` - 窗口是否最近有交互。这将在活动后立即更改，或在用户不活动一段时间后更改。
+- `vscode::WindowState.focused` - 当前窗口是否处于焦点状态。
 
 ```ts {4}
 import { defineExtension, useWindowState, watchEffect } from 'reactive-vscode'
@@ -46,9 +46,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Workspace Folders
+## 工作区文件夹
 
-The `reactive::useWorkspaceFolders` composable can be used to get the workspace folders:
+`reactive::useWorkspaceFolders` 可以用于获取工作区文件夹：
 
 ```ts {4}
 import { defineExtension, useWorkspaceFolders, watchEffect } from 'reactive-vscode'
@@ -63,9 +63,9 @@ export = defineExtension(() => {
 })
 ```
 
-## Watch File System Changes
+## 监视文件系统更改
 
-The `reactive::useFsWatcher` composable can be used to watch file system changes:
+`reactive::useFsWatcher` 可以用于监视文件系统更改：
 
 ```ts {4}
 import { computed, defineExtension, useFsWatcher, watchEffect } from 'reactive-vscode'
@@ -79,4 +79,4 @@ export = defineExtension(() => {
 })
 ```
 
-Note that you can pass one of an array of patterns to watch for changes in the file system. Multiple VSCode watchers are created for each pattern.
+请注意，您可以传递一个文件系统更改数组中的模式之一以监视文件系统更改。为每个模式创建多个 VSCode 监视器。
