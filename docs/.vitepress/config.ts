@@ -12,8 +12,8 @@ import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'Reactive VSCode',
-  description: 'Develop VSCode extension with Vue Reactivity API',
+  title: 'Reactive VSCode 中文文档(unofficial)',
+  description: '使用 Vue Reactivity API 开发 vscode 插件',
   lang: 'en-US',
   themeConfig: {
     logo: '/logo.svg',
@@ -77,7 +77,9 @@ export default defineConfig({
       pattern: 'https://github.com/kermanx/reactive-vscode/edit/main/docs/:path',
     },
   },
-  head: [['link', { rel: 'icon', href: '/reactive-vscode/favicon.ico' }]],
+  head: [
+    ['link', { rel: 'icon', href: '/reactive-vscode/favicon.ico' }],
+  ],
   lastUpdated: true,
 
   vite: {
